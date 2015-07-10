@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+		<!-- <link type="text/css" rel="stylesheet" href="stylesheet.css"/> -->
+		<title>
+                	Mobile Number - Goe-IT Style :P
+		</title>
+		<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript">
+		</script>
+	</head>
+	<body topmargin="0" rightmargin="0" bottommargin="0" leftmargin="0" marginheight="0" marginwidth="0" link="white" alink="white" vlink="white">
+		<table cellspacing="0" cellpadding="2" border="0" style="width: 100%; background-color: #202020" align="center">
+			<tbody>
+				<tr>
+					<td>
+						<div id="map" style="width: 100%; height: 100vh;">
+						</div> <br/>
+						
+						<script>
+								var locations = [
+									['Holleweg :D', 51.971244, 5.786790, 0, 1],
+									['Posbank :D', 52.029204, 6.0222821, 6, 10],
+									['Bergweg :D', 51.970058, 5.571847, 5, 11],
+									['Wageningse Eng :)', 51.980309, 5.691152, 3, 100],
+									['Beenhuizenseweg / Snippendaalseweg :D', 52.025743, 6.003655, 6, 101],
+									['Grebbedijk :D', 51.964887, 5.674963, 1, 110],
+									['Grebbenberg :D', 51.955683, 5.607171, 2, 111],
+									['Defensieweg :)', 51.992233, 5.528359, 9, 1000],
+									['Nieuwe Veenendaalseweg :)', 51.957837, 5.569862, 4, 1001],
+									['Schelmseweg :)', 51.991676,5.858961, 8, 1010]
+								];
+
+								var map = new google.maps.Map(document.getElementById('map'), {
+									zoom: 14,
+									center: new google.maps.LatLng(51.974151, 5.664084),
+									mapTypeId: google.maps.MapTypeId.HYBRID
+								});
+
+								var infowindow = new google.maps.InfoWindow();
+
+								var marker, i;
+
+								for (i = 0; i < locations.length; i++) {  
+									marker = new google.maps.Marker({
+										position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+										map: map,
+										title: locations[i][0]
+									});
+
+
+									google.maps.event.addListener(marker, 'click', (function(marker, i) {
+										return function() {
+											infowindow.setContent(locations[i][3] + '<br/>' + locations[i][4]);
+											infowindow.open(map, marker);
+										}
+									})(marker, i));
+								}
+							</script>						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
